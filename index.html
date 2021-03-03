@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Il programma dovrà chiedere all'utente il numero di chilometri che vuole percorrere e l'età del passeggero. Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio. Il prezzo del biglietto è definito in base ai km (0.21 € al km), ma va applicato uno sconto del 20% per i minorenni e del 40% per gli over 65. -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stampa i tuoi dati</title>
+    <style>
+      * {
+        margin:0;
+        padding:0;
+      }
+      body {
+        background-color:lightblue;
+        font-family: Roboto, sans-serif;
+      }
+      .row {
+        text-align: center;
+      }
+      .row h1 {
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <h1>Distanza :<span id="dst"></span> Km</h1>
+      <h2>Prezzo :<span id="prz"></span> $</h2>
+    </div>
+    <script>
+    var etaSRT= prompt('Quanti anni ha?');
+    var eta= parseInt(etaSRT);
+    console.log(etaSRT, eta)
+
+    var distanzaSRT= prompt('Quanti Km deve fare in treno?');
+    var distanza= parseInt(distanzaSRT);
+    console.log(distanzaSRT, distanza);
+    var costoUnitario= 0.21;
+    var costoTot= costoUnitario * distanza;
+    var percentualiMinori= 20 / 100;
+    var percentualiAnziani= 40 / 100;
+    var scontoMinori= 1 - percentualiMinori;
+    var scontoAnziani= 1 - percentualiAnziani;
+    console.log(costoUnitario, costoTot);
+    if (eta <=18) {
+      costoTot= (costoTot * scontoMinori).toFixed(2);
+      console.log(costoTot);
+
+    }
+    if (eta >=65) {
+      costoTot= (costoTot * scontoAnziani).toFixed(2);
+      console.log(costoTot);
+
+    }
+    document.getElementById('dst').innerHTML = distanza;
+    document.getElementById('prz').innerHTML = costoTot;
+
+    </script>
+  </body>
+</html>
